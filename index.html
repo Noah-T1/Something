@@ -24,26 +24,34 @@
     </style>
 </head>
 <body>
-    <h1>Konami Code</h1>
-
+    <div class="content">
+        <h1>Konami Code</h1>
+        <p id="countdown"></p>
+    </div>
     <script>
-
         const body = document.querySelector('body');
         const check = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b", "a"];
+        let h1 = document.querySelector('h1');
         let x = 0;
 
-        document.addEventListener('keydown', (e) => {
+        function konamiCodeHandler(e) {
             if (e.key === check[x]) {
                 body.style.backgroundColor = 'green';
                 console.log(e);
                 x++;
-            }
-            else {
+                if (x === check.length) {
+                    h1.innerHTML = "TOGA IS MINE YOU BITCH";
+                    body.style.backgroundColor = "#282c35";
+                    document.removeEventListener('keydown', konamiCodeHandler);
+                }
+            } else {
                 body.style.backgroundColor = 'red';
                 console.log(e);
                 x = 0;
             }
-        });
+        }
+
+        document.addEventListener('keydown', konamiCodeHandler);
     </script>
 </body>
 </html>
