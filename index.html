@@ -30,26 +30,29 @@
     </div>
     <script>
         const body = document.querySelector('body');
-        const check = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b", "a"];
+        const check = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
         let h1 = document.querySelector('h1');
+        const content = document.getElementsByClassName('content');
         let x = 0;
 
         function konamiCodeHandler(e) {
-            if (e.key === check[x]) {
-                body.style.backgroundColor = 'green';
-                console.log(e);
-                x++;
-                if (x === check.length) {
-                    h1.innerHTML = "TOGA IS MINE YOU BITCH";
-                    body.style.backgroundColor = "#282c35";
-                    document.removeEventListener('keydown', konamiCodeHandler);
-                }
-            } else {
-                body.style.backgroundColor = 'red';
-                console.log(e);
-                x = 0;
+        if (e.key === check[x]) {
+        body.style.backgroundColor = 'green';
+        console.log(e);
+        x++;
+        if (x === check.length) {
+            for (let i = 0; i < content.length; i++) {
+                content[i].style.display = 'none'; // Make each element with class 'content' invisible
             }
+            body.style.backgroundImage = 'url("https://media.tenor.com/tlCk8Zhv7vkAAAAC/dolphin-dolphin-boob.gif")';
+            document.removeEventListener('keydown', konamiCodeHandler);
         }
+    } else {
+        body.style.backgroundColor = 'red';
+        console.log(e);
+        x = 0;
+    }
+}
 
         document.addEventListener('keydown', konamiCodeHandler);
     </script>
