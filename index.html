@@ -41,11 +41,8 @@
         console.log(e);
         x++;
         if (x === check.length) {
-            for (let i = 0; i < content.length; i++) {
-                content[i].style.display = 'none'; // Make each element with class 'content' invisible
-            }
-            body.style.backgroundImage = 'url("https://media.tenor.com/tlCk8Zhv7vkAAAAC/dolphin-dolphin-boob.gif")';
-            document.removeEventListener('keydown', konamiCodeHandler);
+            body.style.backgroundColor = "#282c35"
+            h1.innerHTML='Nice';
         }
     } else {
         body.style.backgroundColor = 'red';
