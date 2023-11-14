@@ -43,6 +43,7 @@
         if (x === check.length) {
             body.style.backgroundColor = "#282c35"
             h1.innerHTML='Nice';
+            document.removeEventListener('keydown', konamiCodeHandler);
         }
     } else {
         body.style.backgroundColor = 'red';
