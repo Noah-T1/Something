@@ -40,8 +40,9 @@
                 console.log(e);
                 x++;
                 if (x === check.length) {
+                    new Audio('foxy.mp3').play();
+                    document.querySelector('.content').style.display = 'none';
                     body.style.backgroundImage = 'url("Asthony.jpg")';
-                    h1.innerHTML = 'Nice';
                     document.removeEventListener('keydown', konamiCodeHandler);
                 }
             } else {
