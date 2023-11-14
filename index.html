@@ -32,25 +32,24 @@
         const body = document.querySelector('body');
         const check = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
         let h1 = document.querySelector('h1');
-        const content = document.getElementsByClassName('content');
         let x = 0;
 
         function konamiCodeHandler(e) {
-        if (e.key === check[x]) {
-        body.style.backgroundColor = 'green';
-        console.log(e);
-        x++;
-        if (x === check.length) {
-            body.style.backgroundColor = "#282c35"
-            h1.innerHTML='Nice';
-            document.removeEventListener('keydown', konamiCodeHandler);
+            if (e.key === check[x]) {
+                body.style.backgroundColor = 'green';
+                console.log(e);
+                x++;
+                if (x === check.length) {
+                    body.style.backgroundImage = 'url("Asthony.jpg")';
+                    h1.innerHTML = 'Nice';
+                    document.removeEventListener('keydown', konamiCodeHandler);
+                }
+            } else {
+                body.style.backgroundColor = 'red';
+                console.log(e);
+                x = 0;
+            }
         }
-    } else {
-        body.style.backgroundColor = 'red';
-        console.log(e);
-        x = 0;
-    }
-}
 
         document.addEventListener('keydown', konamiCodeHandler);
     </script>
