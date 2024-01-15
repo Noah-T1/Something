@@ -14,7 +14,7 @@
             margin: 0;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             background-color: #282c35;
-        }
+        }   
         h1 {
             background-color: #ffffff;
             border-radius: 10px;
@@ -42,7 +42,6 @@
                 if (x === check.length) {
                     new Audio('foxy.mp3').play();
                     document.querySelector('.content').style.display = 'none';
-                    body.style.backgroundImage = 'url("Asthony.jpg")';
                     document.removeEventListener('keydown', konamiCodeHandler);
                 }
             } else {
