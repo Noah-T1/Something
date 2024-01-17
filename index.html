@@ -1,57 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background-color: #282c35;
-        }   
-        h1 {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
 </head>
-<body>
-    <div class="content">
-        <h1>Konami Code</h1>
-        <p id="countdown"></p>
-    </div>
-    <script>
-        const body = document.querySelector('body');
-        const check = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
-        let h1 = document.querySelector('h1');
-        let x = 0;
 
-        function konamiCodeHandler(e) {
-            if (e.key === check[x]) {
-                body.style.backgroundColor = 'green';
-                console.log(e);
-                x++;
-                if (x === check.length) {
-                    new Audio('foxy.mp3').play();
-                    document.querySelector('.content').style.display = 'none';
-                    document.removeEventListener('keydown', konamiCodeHandler);
+<style>
+    * {
+        margin: 0;
+    }
+
+    img:hover {
+        cursor: pointer;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div id="work">
+        <img src="https://i.pinimg.com/564x/17/77/eb/1777eb7fd416ef4b3c939528d915fc61.jpg" alt=""
+            onclick="dangoheart()">
+    </div>
+    <div id="dango" style="display: none;">
+        <iframe id="youtube-iframe" width="1045" height="588" src="https://www.youtube.com/embed/-EWMgB26bmU"
+            title="Vaporeon copypasta (animated)" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+    </div>
+
+    <!-- Include the YouTube API script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        // Variable to store the YouTube player
+        let player;
+
+        // YouTube API callback function
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-iframe', {
+                events: {
+                    'onReady': onPlayerReady
                 }
-            } else {
-                body.style.backgroundColor = 'red';
-                console.log(e);
-                x = 0;
-            }
+            });
         }
 
-        document.addEventListener('keydown', konamiCodeHandler);
+        // Function to be called when the player is ready
+        function onPlayerReady(event) {
+            // Autoplay the video
+            event.target.playVideo();
+
+            // Make the video go fullscreen
+            event.target.mozRequestFullScreen ? event.target.mozRequestFullScreen() : event.target.webkitEnterFullscreen();
+        }
+
+        // Function to be called when the image is clicked
+        function dangoheart() {
+            let work = document.getElementById("work");
+            let dango = document.getElementById("dango");
+
+            // Hide the "work" div
+            work.style.display = "none";
+
+            // Show the "dango" div
+            dango.style.display = "block";
+        }
     </script>
 </body>
+
 </html>
