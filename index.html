@@ -5,76 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .text {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .text img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .text p {
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
 </head>
 
-<style>
-    * {
-        margin: 0;
-    }
-
-    img:hover {
-        cursor: pointer;
-    }
-
-    body {
-        height: 100vh;
-        width: 100vw;
-        background-color: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
-
 <body>
-    <div id="work">
-        <img src="https://i.pinimg.com/564x/17/77/eb/1777eb7fd416ef4b3c939528d915fc61.jpg" alt=""
-            onclick="dangoheart()">
+    <div class="text">
+        <img src="https://cdn.discordapp.com/avatars/924111491295215716/0b7d0df9616e3754019ee2ad6c7c4e83.webp?size=100"
+            alt="Avatar">
+        <p>Gaming shut up</p>
     </div>
-    <div id="dango" style="display: none;">
-        <iframe id="youtube-iframe" width="1045" height="588" src="https://www.youtube.com/embed/-EWMgB26bmU"
-            title="Vaporeon copypasta (animated)" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-    </div>
-
-    <!-- Include the YouTube API script -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
-    <script>
-        // Variable to store the YouTube player
-        let player;
-
-        // YouTube API callback function
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('youtube-iframe', {
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        // Function to be called when the player is ready
-        function onPlayerReady(event) {
-            // Autoplay the video
-            event.target.playVideo();
-
-            // Make the video go fullscreen
-            event.target.mozRequestFullScreen ? event.target.mozRequestFullScreen() : event.target.webkitEnterFullscreen();
-        }
-
-        // Function to be called when the image is clicked
-        function dangoheart() {
-            let work = document.getElementById("work");
-            let dango = document.getElementById("dango");
-
-            // Hide the "work" div
-            work.style.display = "none";
-
-            // Show the "dango" div
-            dango.style.display = "block";
-        }
-    </script>
 </body>
 
 </html>
