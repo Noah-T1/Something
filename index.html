@@ -6,46 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-
-        .text {
-            width: 100%;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #282c35;
         }
 
-        .text img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
+        h1 {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
         }
 
-        .text p {
-            font-size: 24px;
-            color: #333;
+        .guitar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .guitar img {
+            max-width: 100%;
+            max-height: 100%;
         }
     </style>
 </head>
 
 <body>
-    <div class="text">
-        <img src="https://cdn.discordapp.com/avatars/924111491295215716/0b7d0df9616e3754019ee2ad6c7c4e83.webp?size=100"
-            alt="Avatar">
-        <p>Gaming shut up</p>
+    <div class="content">
+        <h1>Konami Code</h1>
+        <p id="countdown"></p>
     </div>
+
+    <div class="guitar" style="display: none;">
+        <img src="guitar.jpg" alt="">
+    </div>
+
+    <script>
+        const body = document.querySelector('body');
+        const check = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+        let h1 = document.querySelector('h1');
+        let x = 0;
+
+        function konamiCodeHandler(e) {
+            if (e.key === check[x]) {
+                body.style.backgroundColor = 'green';
+                console.log(e);
+                x++;
+                if (x === check.length) {
+                    new Audio('the-animals-house-of-the-rising-sun.mp3').play();
+                    document.querySelector('.content').style.display = 'none';
+                    document.querySelector('.guitar').style.display = 'flex';
+                    body.style.backgroundColor = "#282c35"
+                    document.removeEventListener('keydown', konamiCodeHandler);
+                }
+            } else {
+                body.style.backgroundColor = 'red';
+                console.log(e);
+                x = 0;
+            }
+        }
+
+        document.addEventListener('keydown', konamiCodeHandler);
+    </script>
 </body>
 
 </html>
